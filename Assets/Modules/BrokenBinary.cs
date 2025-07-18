@@ -335,18 +335,18 @@ public class BrokenBinary : MonoBehaviour
         var indices = new List<int>();
         foreach (var token in tokens)
         {
-            if (token.Length != 1 || !token.EqualsAny("T", "R", "L", "M", "B")) yield break;
+            if (token.Length != 1 || !token.EqualsAny("T", "R", "L", "M", "B", "t", "r", "l", "m", "b")) yield break;
         }
         foreach (var token in tokens)
         {
             yield return new WaitForSeconds(0.1f);
             switch (token.ToUpperInvariant())
             {
-                case "R":  Reset.OnInteract(); break;
-                case "L": B0.OnInteract(); break;
-                case "M": B1.OnInteract(); break;
-                case "B": NotSend.OnInteract(); break;
-                case "T": Send.OnInteract(); break;
+                case "R": case "r":  Reset.OnInteract(); break;
+                case "L": case "l": B0.OnInteract(); break;
+                case "M": case "m": B1.OnInteract(); break;
+                case "B": case "b": NotSend.OnInteract(); break;
+                case "T": case "t": Send.OnInteract(); break;
                 default: break;
             }
         }
